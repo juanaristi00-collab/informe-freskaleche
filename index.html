@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Estratégico | Sector Lácteo 2025</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-theme">
+
+    <!-- Scroll Progress Nav -->
+    <nav class="scroll-nav">
+        <ul>
+            <li><a href="#hero" class="scroll-dot active" title="Inicio"></a></li>
+            <li><a href="#dashboard" class="scroll-dot" title="Dashboard"></a></li>
+            <li><a href="#mercado" class="scroll-dot" title="Mercado"></a></li>
+            <li><a href="#competencia" class="scroll-dot" title="Competencia"></a></li>
+            <li><a href="#dofa" class="scroll-dot" title="DOFA"></a></li>
+        </ul>
+    </nav>
+
+    <div class="scrolly-container">
+        <!-- Main Hero Section -->
+        <section id="hero" class="full-screen-section flex-center parallax-bg hero-bg">
+            <div class="hero-content reveal-fade-up">
+                <div class="logo-badge reveal-stagger">
+                    <span class="logo-icon">FL</span> DataLácteos
+                </div>
+                <h1 id="page-title" class="reveal-stagger">Dashboard de Investigación</h1>
+                <p id="page-subtitle" class="reveal-stagger">Análisis Sectorial del Mercado Lácteo en Colombia - Periodo 2024/2025</p>
+                <div class="hero-actions reveal-stagger">
+                    <button class="btn-primary glass-btn">
+                        <i class="fas fa-download"></i> Exportar Datos
+                    </button>
+                    <span id="current-date" class="date-text">Cargando...</span>
+                </div>
+                
+                <!-- NEW TEAM INFO -->
+                <div class="team-info reveal-stagger mt-6 pt-4 border-top-glow" style="margin-left: auto; margin-right: auto; max-width: 600px;">
+                    <p class="text-sm font-bold text-accent mb-1 uppercase tracking-wide">Universidad Pontificia Bolivariana (UPB)</p>
+                    <p class="text-xs text-muted mb-2">Formulación y Evaluación de Proyectos &bull; Docente: Verónica Arango Rivera</p>
+                    <p class="text-xs text-gray-300 mt-2">
+                        <span class="text-primary-light font-bold">Equipo Consultor:</span> 
+                        Mariana Cardona Serna &bull; Juan Pablo Aristizabal Giraldo &bull; Sofia Giraldo Sarmiento
+                    </p>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <p>Descubre los Insights</p>
+                <i class="fas fa-chevron-down blink"></i>
+            </div>
+        </section>
+
+        <!-- SECTION: DASHBOARD -->
+        <section id="dashboard" class="full-screen-section section-padding">
+            <div class="content-wrapper">
+                <div class="section-header reveal-fade-left">
+                    <h2 class="section-title">Panorama <span class="gradient-text">General</span></h2>
+                    <p class="section-subtitle">Síntesis de indicadores macro y proyecciones de valor económico.</p>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card glass-panel reveal-stagger-item">
+                        <div class="kpi-icon"><i class="fas fa-coins"></i></div>
+                        <div class="kpi-value">7.1B <small>COP</small></div>
+                        <div class="kpi-label">Ventas Retail</div>
+                        <p class="text-sm border-top-glow mt-2">Valoración del mercado en 2024.</p>
+                    </div>
+                    <div class="kpi-card glass-panel secondary reveal-stagger-item">
+                        <div class="kpi-icon variant-2"><i class="fas fa-chart-area"></i></div>
+                        <div class="kpi-value">2.3%</div>
+                        <div class="kpi-label">Aporte al PIB</div>
+                        <p class="text-sm border-top-glow mt-2">Peso en la economía nacional.</p>
+                    </div>
+                    <div class="kpi-card glass-panel danger reveal-stagger-item">
+                        <div class="kpi-icon variant-3"><i class="fas fa-users-cog"></i></div>
+                        <div class="kpi-value">6.583</div>
+                        <div class="kpi-label">Empresas</div>
+                        <p class="text-sm border-top-glow mt-2">Establecimientos registrados.</p>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="card glass-panel reveal-scale-up chart-wrapper">
+                        <div class="card-header">
+                            <h3 class="card-title">Valor de Producción (Millones USD)</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="growthChart" class="chart-element"></canvas></div>
+                    </div>
+                    <div class="card glass-panel reveal-scale-up chart-wrapper" style="transition-delay: 0.2s;">
+                        <div class="card-header">
+                            <h3 class="card-title">Relación de Dominancia</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="shareChart" class="chart-element"></canvas></div>
+                    </div>
+                </div>
+
+                <div class="card glass-panel reveal-fade-up mt-8 neon-border">
+                    <h3 class="text-primary-light mb-4"><i class="fas fa-search"></i> Interpretación de Indicadores</h3>
+                    <div class="grid-2col gap-lg">
+                        <div>
+                            <p class="font-medium text-white mb-2">Resiliencia frente a la Contracción:</p>
+                            <p class="text-muted text-sm">A pesar de una caída proyectada de <strong class="text-danger">-3,6%</strong> en el valor agregado para 2024, el horizonte de recuperación post-2029 muestra un crecimiento compuesto impulsado por la tecnificación de los 88 grandes jugadores que dominan el acopio formal.</p>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white mb-2">Concentración Estratégica:</p>
+                            <p class="text-muted text-sm">El mercado presenta una estructura piramidal. Mientras hay más de 6.000 establecimientos, menos del <strong class="text-warning">2%</strong> (grandes empresas) concentra el <strong class="text-warning">86%</strong> de los ingresos, generando barreras de entrada críticas por logística y marca.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MERCADO -->
+        <section id="mercado" class="full-screen-section section-padding parallax-bg market-bg">
+            <div class="content-wrapper reveal-container overlay-dark">
+                <div class="section-header reveal-fade-left">
+                    <h2 class="section-title">Dinámica del <span class="gradient-text">Mercado</span></h2>
+                    <p class="section-subtitle">Consumo, balanza comercial y retos externos estructurales.</p>
+                </div>
+
+                <div class="grid-2-1 gap-xl">
+                    <div class="card glass-panel reveal-fade-right">
+                        <h3 class="card-title text-primary-light mb-6">Análisis del Consumidor</h3>
+                        <p class="text-muted mb-4">El sector enfrenta su crisis de demanda más profunda en tres décadas. El consumo per cápita se sitúa en <strong class="text-white">144 litros</strong>, impactado por:</p>
+                        <ul class="custom-list space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="icon-box danger-box"><i class="fas fa-minus text-xs"></i></div>
+                                <span class="text-sm text-gray"><strong class="text-white">Erosión del Poder Adquisitivo:</strong> La inflación obliga a la sustitución de productos tradicionales por alternativas informales o de menor valor.</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="icon-box info-box"><i class="fas fa-leaf text-xs"></i></div>
+                                <span class="text-sm text-gray"><strong class="text-white">Cambio de Hábitos:</strong> El 42% de los consumidores jóvenes consideran leches vegetales por salud o sostenibilidad, quitando cuota.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card glass-panel reveal-scale-up center-content flex-col justify-center">
+                        <h3 class="card-title text-danger mb-4">Balanza de Riesgo</h3>
+                        <div class="text-center mb-6">
+                            <span class="ratio-text text-danger drop-shadow-danger">4:1</span>
+                            <p class="text-xs font-bold uppercase tracking-wide text-gray-400">Importación vs Exportación</p>
+                        </div>
+                        <p class="text-sm text-center text-muted">Colombia importa masivamente (u$s 105.5M) para compensar costos, mientras la exportación es marginal (u$s 26.3M).</p>
+                    </div>
+                </div>
+
+                <div class="card glass-panel highlight-panel reveal-fade-up mt-8">
+                    <div class="flex items-center gap-6">
+                        <i class="fas fa-lightbulb icon-lg text-success drop-shadow-success"></i>
+                        <div>
+                            <p class="text-lg font-bold text-white mb-2">Síntesis de Mercado</p>
+                            <p class="text-muted text-sm">El reto estructural no es la producción, sino la <strong class="text-white">eficiencia de costos</strong>. Con el TLC 2026 acercándose, el sector debe migrar de la "cantidad de litros" a la "calidad de derivados" para competir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: COMPETENCIA -->
+        <section id="competencia" class="full-screen-section section-padding">
+            <div class="content-wrapper">
+                <div class="section-header reveal-fade-left">
+                    <h2 class="section-title">Análisis de <span class="gradient-text">Competencia</span></h2>
+                    <p class="section-subtitle">Segmentación y posicionamiento macro de las marcas líderes en el país.</p>
+                </div>
+
+                <div class="card glass-panel reveal-fade-up max-w-4xl mx-auto mb-8">
+                    <div class="competitor-list space-y-8 p-4">
+                        <div class="bar-group reveal-stagger-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold text-lg text-white">Colanta</span>
+                                <span class="font-bold text-primary-light">$4.6B</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-bar bg-primary-light" style="width: 0%;" data-width="100%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-group reveal-stagger-item" style="transition-delay: 0.1s;">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold text-lg text-white">Alpina</span>
+                                <span class="font-bold text-accent">$2.1B</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-bar bg-accent" style="width: 0%;" data-width="45%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-group reveal-stagger-item" style="transition-delay: 0.2s;">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-bold text-lg text-brand">Freskaleche S.A.S.</span>
+                                <span class="font-bold text-brand">$385M</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-bar bg-brand glow-brand" style="width: 0%;" data-width="8.5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card glass-panel brand-border reveal-fade-up max-w-4xl mx-auto">
+                    <h3 class="text-brand mb-4 text-xl"><i class="fas fa-trophy mr-2"></i> Posicionamiento de Freskaleche</h3>
+                    <p class="text-gray-300 leading-relaxed text-md">
+                        Aunque la participación a nivel nacional parece pequeña frente a gigantes como Colanta, <strong class="text-white">Freskaleche</strong> opera bajo un modelo de <strong class="text-white">dominio geográfico estratégico</strong>. Su tracción real se mide estructuralmente en la región nororiental, donde su logística capilar y lealtad de marca le permiten sostener un crecimiento sostenido de ingresos del <strong class="text-brand">5.3%</strong> en 2024, logrando superar el promedio de crecimiento nacional del sector. 
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: DOFA -->
+        <section id="dofa" class="full-screen-section section-padding parallax-bg swot-bg">
+            <div class="content-wrapper reveal-container overlay-dark">
+                <div class="section-header reveal-fade-left center-text">
+                    <h2 class="section-title">Matriz <span class="gradient-text">DOFA</span></h2>
+                    <p class="section-subtitle">Diagnóstico estratégico de capacidades competitivas y entorno.</p>
+                </div>
+
+                <div class="swot-grid mt-12 max-w-5xl mx-auto">
+                    <!-- S -->
+                    <div class="card glass-panel swot-item swot-S reveal-scale-up">
+                        <div class="swot-header">
+                            <span class="swot-letter bg-success-dim text-success">F</span>
+                            <h4 class="text-success">Fortalezas</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">Dominio logístico regional y marca fuertemente anclada en la tradición del consumidor del Nororiente Colombiano.</p>
+                    </div>
+                    <!-- W -->
+                    <div class="card glass-panel swot-item swot-W reveal-scale-up" style="transition-delay: 0.1s;">
+                        <div class="swot-header">
+                            <span class="swot-letter bg-warning-dim text-warning">D</span>
+                            <h4 class="text-warning">Debilidades</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">Estructura de costos altamente sensible a la inflación y menor escala para negociar insumos a nivel global.</p>
+                    </div>
+                    <!-- O -->
+                    <div class="card glass-panel swot-item swot-O reveal-scale-up" style="transition-delay: 0.2s;">
+                        <div class="swot-header">
+                            <span class="swot-letter bg-accent-dim text-accent">O</span>
+                            <h4 class="text-accent">Oportunidades</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">Mercado externo receptivo (Venezuela exportaciones +141%) y alta demanda urbana en productos de valor funcional.</p>
+                    </div>
+                    <!-- T -->
+                    <div class="card glass-panel swot-item swot-T reveal-scale-up" style="transition-delay: 0.3s;">
+                        <div class="swot-header">
+                            <span class="swot-letter bg-danger-dim text-danger">A</span>
+                            <h4 class="text-danger">Amenazas</h4>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">TLC 2026 inminente: Entrada masiva de leche en polvo con arancel 0% desde EE.UU. e informalidad desbordada.</p>
+                    </div>
+                </div>
+
+                <div class="card glass-panel highlight-success reveal-fade-up max-w-5xl mx-auto mt-12 center-text p-8">
+                    <h3 class="text-success text-2xl mb-4 font-bold flex justify-center items-center gap-3">
+                        <i class="fas fa-check-double text-3xl"></i> Conclusión Estratégica
+                    </h3>
+                    <p class="text-white text-lg leading-relaxed max-w-3xl mx-auto">
+                        Freskaleche debe acelerar agresivamente su transición hacia <strong class="text-success glow-text-success">productos de valor agregado</strong> (quesos, yogures funcionales) para blindarse económicamente ante la guerra de precios de la leche líquida que detonará el TLC. La exportación andina actúa como válvula crítica.
+                    </p>
+                </div>
+                
+                <!-- Footer within last section -->
+                <footer class="mt-20 border-t border-gray-800 pt-8 pb-4 opacity-60 flex justify-center text-sm text-gray-400">
+                    <p><i class="fas fa-file-invoice mr-2"></i> Investigación basada en datos Supersociedades, DANE y reportes 2024/2025.</p>
+                </footer>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

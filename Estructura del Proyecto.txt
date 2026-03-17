@@ -1,0 +1,43 @@
+﻿Estructura del Proyecto: Dashboard Interactivo Freskaleche S.A.S.
+Institución: Universidad Pontificia Bolivariana (UPB)
+Curso: Formulación y Evaluación de Proyectos
+Docente: Verónica Arango Rivera
+Equipo Consultor: Mariana Cardona Serna, Juan Pablo Aristizabal Giraldo, Sofia Giraldo Sarmiento
+Fecha: Marzo 2026
+1. Arquitectura Tecnológica
+El proyecto se desarrolló bajo una arquitectura de Single Page Application (SPA) estática para garantizar portabilidad inmediata sin requerir servidores locales.
+* Estructura: HTML5.
+* Estilos y UI: Tailwind CSS (Implementación vía CDN para mantener un único archivo). Tema oscuro corporativo.
+* Visualización de Datos: Chart.js (Renderizado en Canvas).
+* Interactividad: Vanilla JavaScript (Control del DOM y estado de pestañas).
+2. Mapa de Navegación y Contenido Analítico
+2.1. Portada
+* Presentación institucional.
+* Nombres del equipo y docente.
+* Animación de entrada (Fade-in).
+2.2. El Sector (Dinámica Macroeconómica)
+* Tarjetas de KPI (Métricas Clave):
+   * Ventas Retail 2024 (7,1 Billones COP).
+   * Peso en el PIB Agropecuario (24,3%).
+   * Caída del Consumo Per Cápita (144 Litros - Mínimo histórico).
+* Visualización Principal: Gráfico de líneas detallando la evolución y proyección del mercado (2021 histórico, 2024 valle, 2033 proyección de recuperación a 3.200 M USD).
+2.3. Competencia (Análisis Microeconómico)
+* Visualización Principal: Gráfico de burbujas. Cruza tres variables críticas:
+   * Eje X: Ingresos operativos.
+   * Eje Y: Tasa de crecimiento.
+   * Radio (Tamaño): Cuota de mercado.
+* Análisis Cualitativo: * Posición regional de Freskaleche (crecimiento estabilizado al 5.3%).
+   * Fricción del entorno por la informalidad lechera (50% del volumen nacional).
+2.4. Clientes (Comportamiento de la Demanda)
+* Visualizaciones Secundarias: * Gráfico de dona: Frecuencia de consumo (Alta, Media, Baja).
+   * Gráfico polar (Pie): Factores de decisión (Precio, Disponibilidad, Calidad, Nutrición).
+* Diagnóstico de Dolores (Pains):
+   * El precio como filtro absoluto: Pérdida de poder adquisitivo en estratos 2, 3 y 4.
+   * Quiebres de stock: Sustitución inmediata de marca si el producto no está en la vitrina.
+   * Ansiedad por innovación: Rechazo a cambios de sabor en la transición a portafolios deslactosados.
+2.5. Matriz DOFA (Estrategia Corporativa)
+Estructura de cuadrícula evaluando el entorno interno y externo:
+* Fortalezas: Tracción validada (+41% histórico), músculo logístico en el nororiente colombiano.
+* Debilidades: Escala menor frente a gigantes (Colanta, Alpina), desaceleración en el último periodo.
+* Oportunidades: Mercado andino natural (Venezuela), pivote hacia lácteos de valor funcional (quesos maduros, alta proteína).
+* Amenazas: Desgravación total del TLC con EE.UU. en 2026, auge de bebidas vegetales, problemas de infraestructura rural.
